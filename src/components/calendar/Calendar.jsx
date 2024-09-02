@@ -7,10 +7,9 @@ import events from '../../gateway/events.js';
 
 import './calendar.scss';
 
-const Calendar = () => {
-  const [events, setEvents] = useState(events);
+const Calendar = ({ weekDates }) => {
+  const [events, setEvents] = useState([]);
 
-  const { weekDates } = useParams();
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
