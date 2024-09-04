@@ -5,7 +5,7 @@
 ### The tech stack is:
 
 - [React]
-- [ReactHooks]
+- [React Hooks]
 
 ### Author
 
