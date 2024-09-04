@@ -1,6 +1,6 @@
 # React Calendar Project
 
-### [Site link](https://xxirynaxx.github.io/project1_HTML&CSS/)
+### [Site link](https://master--sparkling-cat-1a3d4a.netlify.app/)
 
 ### The tech stack is:
 
