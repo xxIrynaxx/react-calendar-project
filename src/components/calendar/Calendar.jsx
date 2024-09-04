@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
-
-import Navigation from './../navigation/Navigation.jsx';
-import Week from '../week/Week.jsx';
-import Sidebar from '../sidebar/Sidebar.jsx';
-import events from '../../gateway/events.js';
-
+import React from 'react';
+import PropTypes from 'prop-types';
+import Navigation from '../navigation/Navigation';
+import Week from '../week/Week';
+import Sidebar from '../sidebar/Sidebar';
 import './calendar.scss';
 
-const Calendar = ({ weekDates }) => {
-  const [events, setEvents] = useState([]);
-
+const Calendar = ({
+  events,
+  weekDates,
+  updateEvents,
+  toggleModal,
+  setModalHandler,
+}) => {
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
       <div className="calendar__body">
         <div className="calendar__week-container">
           <Sidebar />
-          <Week weekDates={weekDates} events={events} />
+          <Week
+            weekDates={weekDates}
+            events={events}
+            updateEvents={updateEvents}
+            toggleModal={toggleModal}
+            setModalHandler={setModalHandler}
+          />
         </div>
       </div>
     </section>
@@ -24,3 +32,11 @@ const Calendar = ({ weekDates }) => {
 };
 
 export default Calendar;
+
+Calendar.propTypes = {
+  events: PropTypes.array,
+  weekDates: PropTypes.array,
+  updateEvents: PropTypes.func,
+  toggleModal: PropTypes.func,
+  setModalHandler: PropTypes.func,
+};

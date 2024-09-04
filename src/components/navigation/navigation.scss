@@ -4,9 +4,16 @@
   height: calc(100vh - 60px);
 
   &__header {
+    color: #fff;
     display: flex;
     height: 100px;
     padding-left: 48px;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgb(9, 9, 121) 27%,
+      rgba(0, 212, 255, 1) 90%
+    );
   }
 
   &__day {
@@ -14,4 +21,19 @@
     flex: 1;
     border-left: 1px solid #eee;
   }
+}
+
+.day-label__day-number_today {
+  font-size: 22px;
+  width: 35px;
+  text-align: center;
+  color: rgba(9, 9, 121, 1);
+  border-radius: 100%;
+  background-color: #e1ff00d2;
+}
+
+.day-label__day-name_today {
+  color: #e2ff00;
+  font-size: 14px;
+  text-transform: uppercase;
 }
