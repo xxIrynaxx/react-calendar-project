@@ -6,6 +6,15 @@
 
 - [React]
 - [React Hooks]
+- [JS (ES6)]
+- Sass (Scss)
+- Webpack
+- REST API
+
+### Commands:
+
+- [npm start] - to start project
+- [npm run build] - to build production
 
 ### Author
 
