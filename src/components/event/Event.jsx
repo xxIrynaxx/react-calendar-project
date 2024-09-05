@@ -71,8 +71,6 @@ const Event = ({
   );
 };
 
-export default Event;
-
 Event.propTypes = {
   height: PropTypes.number,
   id: PropTypes.string,
@@ -82,3 +80,5 @@ Event.propTypes = {
   updateEvents: PropTypes.func,
   dateFrom: PropTypes.object,
 };
+
+export default Event;

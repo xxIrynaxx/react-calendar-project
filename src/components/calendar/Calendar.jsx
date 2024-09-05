@@ -31,8 +31,6 @@ const Calendar = ({
   );
 };
 
-export default Calendar;
-
 Calendar.propTypes = {
   events: PropTypes.array,
   weekDates: PropTypes.array,
@@ -40,3 +38,5 @@ Calendar.propTypes = {
   toggleModal: PropTypes.func,
   setModalHandler: PropTypes.func,
 };
+
+export default Calendar;

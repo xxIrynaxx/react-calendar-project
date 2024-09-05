@@ -127,8 +127,6 @@ const Modal = ({
   );
 };
 
-export default Modal;
-
 Modal.propTypes = {
   toggleModal: PropTypes.func,
   updateEvents: PropTypes.func,
@@ -140,3 +138,5 @@ Modal.propTypes = {
   handlerEndTime: PropTypes.func,
   events: PropTypes.array,
 };
+
+export default Modal;

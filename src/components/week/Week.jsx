@@ -51,8 +51,6 @@ const Week = ({
   );
 };
 
-export default Week;
-
 Week.propTypes = {
   events: PropTypes.array,
   weekDates: PropTypes.array,
@@ -60,3 +58,5 @@ Week.propTypes = {
   toggleModal: PropTypes.func,
   setModalHandler: PropTypes.func,
 };
+
+export default Week;

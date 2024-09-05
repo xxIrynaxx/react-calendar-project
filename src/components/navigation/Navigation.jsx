@@ -34,8 +34,8 @@ const Navigation = ({ weekDates }) => {
   );
 };
 
-export default Navigation;
-
 Navigation.propTypes = {
   weekDates: PropTypes.array,
 };
+
+export default Navigation;

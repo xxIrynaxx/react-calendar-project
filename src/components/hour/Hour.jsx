@@ -58,8 +58,6 @@ const Hour = ({ events, updateEvents, dataDay, dataHour, hourEvents }) => {
   );
 };
 
-export default Hour;
-
 Hour.propTypes = {
   events: PropTypes.array,
   updateEvents: PropTypes.func,
@@ -67,3 +65,5 @@ Hour.propTypes = {
   dataDay: PropTypes.number,
   dataHour: PropTypes.number,
 };
+
+export default Hour;

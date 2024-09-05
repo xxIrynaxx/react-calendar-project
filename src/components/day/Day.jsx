@@ -30,11 +30,11 @@ const Day = ({ events, updateEvents, dataDay, dayEvents }) => {
   );
 };
 
-export default Day;
-
 Day.propTypes = {
   events: PropTypes.array,
   updateEvents: PropTypes.func,
   dayEvents: PropTypes.array,
   dataDay: PropTypes.number,
 };
+
+export default Day;

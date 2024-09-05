@@ -28,10 +28,10 @@ const Header = ({ month, toggleModal, onSwitchWeek }) => (
   </header>
 );
 
-export default Header;
-
 Header.propTypes = {
   month: PropTypes.string,
-  tooggleWeekHandler: PropTypes.func,
-  updateEvents: PropTypes.func,
+  toggleModal: PropTypes.func,
+  onSwitchWeek: PropTypes.func,
 };
+
+export default Header;
