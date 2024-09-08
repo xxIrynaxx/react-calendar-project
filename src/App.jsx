@@ -99,13 +99,10 @@ const App = () => {
       <Header
         onSwitchWeek={onSwitchWeek}
         toggleModal={toggleModal}
-        updateEvents={updateEvents}
         month={month}
       />
       <Calendar
         weekDates={weekDates}
-        toggleModal={toggleModal}
-        setModalHandler={setModalHandler}
         events={events}
         updateEvents={updateEvents}
       />
