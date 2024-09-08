@@ -1,37 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Line from '../line/Line';
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
+import { format, getHours } from 'date-fns';
 import './hour.scss';
 
-const Hour = ({ events, updateEvents, dataDay, dataHour, hourEvents }) => {
-  const [isLine, setLine] = useState();
-  const [lineStyle, setLineStyle] = useState({
-    marginTop: new Date().getMinutes() - 1,
-  });
-
-  useEffect(() => {
-    const isHour = new Date().getHours() === dataHour;
-    const isDay = new Date().getDate() === dataDay;
-    const line = isHour && isDay;
-    setLine(line);
-
-    const interval = setInterval(() => {
-      setLine(line);
-      setLineStyle({
-        marginTop: lineStyle.marginTop + 1,
-      });
-    }, 60000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
+const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
+  const isToday =
+    format(dayStart, 'MM dd yyyy') === format(new Date(), 'MM dd yyyy');
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
-      {isLine && <Line lineStyle={lineStyle} />}
+      {isToday && dataHour === getHours(new Date()) ? <Line /> : null}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(
           dateFrom.getMinutes()
@@ -62,8 +42,8 @@ Hour.propTypes = {
   events: PropTypes.array,
   updateEvents: PropTypes.func,
   hourEvents: PropTypes.array,
-  dataDay: PropTypes.number,
   dataHour: PropTypes.number,
+  dayStart: PropTypes.instanceOf(Date),
 };
 
 export default Hour;
