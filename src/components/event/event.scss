@@ -1,11 +1,13 @@
 .event {
   position: absolute;
   width: 100%;
-  background-color: rgb(114, 157, 238);
+  height: 100%;
+  background-color: cornflowerblue;
   z-index: 1;
   border-radius: 8px;
   padding: 8px;
   color: #fff;
+  cursor: pointer;
 
   &__title {
     width: 100%;
@@ -13,6 +15,18 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-bottom: 8px;
+  }
+
+  &__description {
+    margin: 8px 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  &__scroll {
+    max-height: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   &:hover {

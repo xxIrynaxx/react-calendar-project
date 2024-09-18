@@ -1,5 +1,5 @@
 export const checkEventTiming = (startMinute, endMinute) => {
-  if (startMinute % 15 !== 0 || endMinute % 15 !== 0) {
+  if (Number(startMinute) % 15 !== 0 || Number(endMinute) % 15 !== 0) {
     alert('The event time must be a multiple of 15');
     return true;
   }
@@ -42,9 +42,7 @@ export const checkEventTimeCrossing = (allEvents, currentEvent) => {
 
 export const checkDeleteEvent = timeDifferent => {
   if (timeDifferent < 1000 * 60 * -15) {
-    alert(
-      'You cannot delete an event earlier than 15 minutes before the start time.'
-    );
+    alert('You cannot delete an event earlier than 15 minutes before the start time.');
     return true;
   }
   return false;

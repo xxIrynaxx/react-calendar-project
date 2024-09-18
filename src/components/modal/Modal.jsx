@@ -24,9 +24,7 @@ const Modal = ({
   const [descriptionValue, setDescriptionValue] = useState('');
 
   const changeValueHandler = e =>
-    e.target.name === 'title'
-      ? setTitleValue(e.target.value)
-      : setDescriptionValue(e.target.value);
+    e.target.name === 'title' ? setTitleValue(e.target.value) : setDescriptionValue(e.target.value);
 
   const createEventHandler = async e => {
     e.preventDefault();
@@ -44,8 +42,10 @@ const Modal = ({
       dateFrom: new Date(year, month - 1, day, startHour, startMinute),
       dateTo: new Date(year, month - 1, day, endHour, endMinute),
     };
-    const { dateFrom, dateTo } = event;
 
+    const { dateFrom, dateTo } = event;
+    console.log(dateFrom);
+    console.log(dateTo);
     if (checkEventStart(dateFrom, dateTo)) {
       return false;
     }
@@ -113,11 +113,7 @@ const Modal = ({
               value={descriptionValue}
               onChange={changeValueHandler}
             />
-            <button
-              type="submit"
-              className="event-form__submit-btn"
-              onClick={createEventHandler}
-            >
+            <button type="submit" className="event-form__submit-btn" onClick={createEventHandler}>
               Create
             </button>
           </form>

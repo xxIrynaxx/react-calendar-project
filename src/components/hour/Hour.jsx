@@ -7,18 +7,13 @@ import { format, getHours } from 'date-fns';
 import './hour.scss';
 
 const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
-  const isToday =
-    format(dayStart, 'MM dd yyyy') === format(new Date(), 'MM dd yyyy');
+  const isToday = format(dayStart, 'MM dd yyyy') === format(new Date(), 'MM dd yyyy');
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {isToday && dataHour === getHours(new Date()) ? <Line /> : null}
-      {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
-        const eventStart = `${dateFrom.getHours()}:${formatMins(
-          dateFrom.getMinutes()
-        )}`;
-        const eventEnd = `${dateTo.getHours()}:${formatMins(
-          dateTo.getMinutes()
-        )}`;
+      {hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
+        const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
+        const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
 
         return (
           <Event
@@ -28,6 +23,7 @@ const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
             marginTop={dateFrom.getMinutes()}
             time={`${eventStart} - ${eventEnd}`}
             title={title}
+            description={description}
             events={events}
             updateEvents={updateEvents}
             dateFrom={dateFrom}
