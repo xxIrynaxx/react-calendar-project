@@ -1,6 +1,6 @@
 # React Calendar Project
 
-### [Site link](https://master--sparkling-cat-1a3d4a.netlify.app/)
+### [Site link](https://master--react-calendar1.netlify.app/)
 
 ### The tech stack is:
 
