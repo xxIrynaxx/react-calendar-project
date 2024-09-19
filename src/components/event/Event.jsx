@@ -45,7 +45,9 @@ const Event = ({ height, marginTop, title, description, time, id, updateEvents }
           <div style={eventStyle} className="event" onClick={changeHandler}>
             <div className="event__title">{title}</div>
             <div className="event__time">{time}</div>
-            <span className="event__description event__scroll">{description}</span>
+            <div className="event__description-scroll">
+              <span className="event__description">{description}</span>
+            </div>
 
             {showBtn && (
               <button className="delete-event-btn" onClick={deleteEventHandler}>
