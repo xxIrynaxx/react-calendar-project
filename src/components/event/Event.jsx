@@ -15,7 +15,7 @@ const Event = ({ height, marginTop, title, description, time, id, updateEvents }
     });
   };
 
-  const deleteEventHandler = e => {
+  const deleteEventHandler = async e => {
     e.stopPropagation();
 
     setEvent({
@@ -23,13 +23,13 @@ const Event = ({ height, marginTop, title, description, time, id, updateEvents }
       showEvent: true,
     });
 
+    await fetchDeleteEvent(id);
+    updateEvents();
+
     setEvent({
       showBtn: false,
       showEvent: false,
     });
-
-    fetchDeleteEvent(id);
-    updateEvents();
   };
 
   const eventStyle = {
