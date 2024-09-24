@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Navigation from '../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
+
 import './calendar.scss';
 
 const Calendar = ({ events, weekDates, updateEvents }) => {
@@ -12,11 +13,7 @@ const Calendar = ({ events, weekDates, updateEvents }) => {
       <div className="calendar__body">
         <div className="calendar__week-container">
           <Sidebar />
-          <Week
-            weekDates={weekDates}
-            events={events}
-            updateEvents={updateEvents}
-          />
+          <Week weekDates={weekDates} events={events} updateEvents={updateEvents} />
         </div>
       </div>
     </section>

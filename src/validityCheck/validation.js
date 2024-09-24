@@ -15,7 +15,8 @@ export const checkEventStart = (dateFrom, dateTo) => {
 };
 
 export const checkEventDuration = duration => {
-  if (duration > 1000 * 60 * 60 * 6) {
+  const maxEventDuration = 1000 * 60 * 60 * 6;
+  if (duration > maxEventDuration) {
     alert('One event cannot last more than 6 hours.');
     return true;
   }
@@ -41,7 +42,8 @@ export const checkEventTimeCrossing = (allEvents, currentEvent) => {
 };
 
 export const checkDeleteEvent = timeDifferent => {
-  if (timeDifferent < 1000 * 60 * -15) {
+  const timeBeforeEventStart = 1000 * 60 * -15;
+  if (timeDifferent < timeBeforeEventStart) {
     alert('You cannot delete an event earlier than 15 minutes before the start time.');
     return true;
   }

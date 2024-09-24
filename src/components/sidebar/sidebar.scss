@@ -1,12 +1,10 @@
-.calendar {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 60px);
+@use '../../variables.scss';
 
+.calendar {
   &__time-scale {
     height: 100%;
     width: 48px;
-    background: rgba(2, 0, 36, 1);
+    background: variables.$time-scale-background;
   }
 }
 
@@ -14,9 +12,9 @@
   height: 60px;
   width: 48px;
   text-align: right;
-  color: #fff;
+  color: variables.$text-color;
+
   &__time {
-    // position: relative;
     font-size: 12px;
     opacity: 0.7;
     top: -12px;

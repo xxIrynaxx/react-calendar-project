@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import Line from '../line/Line';
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
@@ -12,15 +13,15 @@ const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {isToday && dataHour === getHours(new Date()) ? <Line /> : null}
       {hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
-        const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
-        const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
+        const eventStart = `${moment(dateFrom).hour()}:${formatMins(moment(dateFrom).minute())}`;
+        const eventEnd = `${moment(dateTo).hour()}:${formatMins(moment(dateTo).minute())}`;
 
         return (
           <Event
             key={id}
             id={id}
-            height={(dateTo.getTime() - dateFrom.getTime()) / (1000 * 60)}
-            marginTop={dateFrom.getMinutes()}
+            height={moment(dateTo).diff(moment(dateFrom), 'minutes')}
+            marginTop={moment(dateFrom).minute()}
             time={`${eventStart} - ${eventEnd}`}
             title={title}
             description={description}

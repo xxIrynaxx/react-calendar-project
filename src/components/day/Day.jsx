@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import Hour from '../hour/Hour';
-import './day.scss';
 
 const Day = ({ events, updateEvents, dayStart, dayEvents, dataDay }) => {
   const hours = Array(24)
     .fill()
-    .map((val, index) => index);
+    .map((_, index) => index);
 
   return (
     <div className="calendar__day" data-day={dataDay}>
       {hours.map(hour => {
-        const hourEvents = dayEvents.filter(
-          event => event.dateFrom.getHours() === hour
-        );
+        const hourEvents = dayEvents.filter(event => moment(event.dateFrom).hour() === hour);
 
         return (
           <Hour

@@ -1,30 +1,38 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { fetchCreateEvent } from '../../gateway/eventsGateway';
-import './modal.scss';
 import {
   checkEventDuration,
   checkEventStart,
   checkEventTimeCrossing,
   checkEventTiming,
 } from '../../validityCheck/validation.js';
+import './modal.scss';
 
-const Modal = ({
-  toggleModal,
-  updateEvents,
-  date,
-  startTime,
-  endTime,
-  handlerDate,
-  handlerStartTime,
-  handlerEndTime,
-  events,
-}) => {
+const Modal = ({ toggleModal, updateEvents, events }) => {
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
+  const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
+  const [startTime, setStartTime] = useState(moment(new Date()).format('HH:00'));
+  const [endTime, setEndTime] = useState(
+    moment(new Date().setHours(new Date().getHours() + 1)).format('HH:00'),
+  );
 
   const changeValueHandler = e =>
     e.target.name === 'title' ? setTitleValue(e.target.value) : setDescriptionValue(e.target.value);
+
+  const handlerDate = e => {
+    setDate(e.target.value);
+  };
+
+  const handlerStartTime = e => {
+    setStartTime(e.target.value);
+  };
+
+  const handlerEndTime = e => {
+    setEndTime(e.target.value);
+  };
 
   const createEventHandler = async e => {
     e.preventDefault();

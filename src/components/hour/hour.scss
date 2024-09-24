@@ -1,3 +1,5 @@
+@use '../../variables.scss';
+
 .calendar {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,6 @@
   &__time-slot {
     height: 59px;
     position: relative;
-    border-bottom: 1px solid #eee;
+    border-bottom: variables.$day-time_slot-border;
   }
 }

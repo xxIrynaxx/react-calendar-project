@@ -1,3 +1,5 @@
+@use '../../variables.scss';
+
 .event {
   position: absolute;
   width: 100%;
@@ -7,7 +9,7 @@
   border-radius: 8px;
   margin: 0;
   padding: 8px;
-  color: #fff;
+  color: variables.$text-color;
   cursor: pointer;
 
   &__title {
@@ -31,9 +33,9 @@
   }
 
   &__description-scroll::-webkit-scrollbar-thumb {
-    background-color: #888;
+    background-color: variables.$description-scroll-background-color;
     border-radius: 10px;
-    border: 3px solid #f1f1f1;
+    border: variables.$description-scroll-border;
   }
 
   &__description {
@@ -43,7 +45,7 @@
   }
 
   &:hover {
-    background-color: #0571be;
+    background-color: variables.$description-hover-color;
   }
 }
 
@@ -51,6 +53,6 @@
   cursor: pointer;
   border: none;
   padding: 5px;
-  background-color: #eee;
+  background-color: variables.$delete-btn-background-color;
   border-radius: 8px;
 }

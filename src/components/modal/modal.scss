@@ -1,3 +1,5 @@
+@use '../../variables.scss';
+
 .modal {
   position: fixed;
   display: flex;
@@ -5,9 +7,9 @@
   align-items: center;
 
   &__content {
-    background: #fff;
+    background: variables.$popup-content-background;
     padding: 16px;
-    border: 1px solid #ccc;
+    border: variables.$button-content-popup-border;
     border-radius: 8px;
   }
 }
@@ -18,7 +20,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: variables.$overlay-background-color;
   z-index: 10;
 }
 
@@ -52,7 +54,7 @@
     margin: 8px;
     margin-left: auto;
     border: none;
-    color: #fff;
+    color: variables.$text-color;
     background-color: cornflowerblue;
     border: none;
     padding: 8px 16px;

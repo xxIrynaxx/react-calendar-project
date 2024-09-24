@@ -1,3 +1,5 @@
+@use '../../variables.scss';
+
 .calendar {
   display: flex;
   flex-direction: column;
@@ -33,13 +35,13 @@
   &__day {
     position: relative;
     flex: 1;
-    border-left: 1px solid #eee;
+    border-left: variables.$day-time_slot-border;
   }
 
   &__time-slot {
     height: 60px;
     position: relative;
-    border-bottom: 1px solid #eee;
+    border-bottom: variables.$day-time_slot-border;
   }
 
   &__day-label {
@@ -79,6 +81,6 @@
 .line {
   position: absolute;
   width: 100%;
-  border-top: 2px solid red;
+  border-top: variables.$line-border;
   z-index: 5;
 }
