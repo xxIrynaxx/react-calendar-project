@@ -5,7 +5,6 @@ import Line from '../line/Line';
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
 import { format, getHours } from 'date-fns';
-import './hour.scss';
 
 const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
   const isToday = format(dayStart, 'MM dd yyyy') === format(new Date(), 'MM dd yyyy');

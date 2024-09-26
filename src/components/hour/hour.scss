@@ -1,9 +1,0 @@
-@import '../../variables.scss';
-
-.calendar {
-  &__time-slot {
-    height: 59px;
-    position: relative;
-    border-bottom: $day-time_slot-border;
-  }
-}
