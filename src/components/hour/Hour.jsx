@@ -38,10 +38,15 @@ const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
 
 Hour.propTypes = {
   events: PropTypes.array,
-  updateEvents: PropTypes.func,
-  hourEvents: PropTypes.array,
-  dataHour: PropTypes.number,
-  dayStart: PropTypes.instanceOf(Date),
+  updateEvents: PropTypes.func.isRequired,
+  hourEvents: PropTypes.array.isRequired,
+  dataHour: PropTypes.number.isRequired,
+  dayStart: PropTypes.instanceOf(Date).isRequired,
+};
+
+Hour.defaultProps = {
+  events: [],
+  hourEvents: [],
 };
 
 export default Hour;

@@ -62,13 +62,17 @@ const Event = ({ height, marginTop, title, description, time, id, updateEvents }
 };
 
 Event.propTypes = {
-  height: PropTypes.number,
-  id: PropTypes.string,
-  marginTop: PropTypes.number,
-  time: PropTypes.string,
-  title: PropTypes.string,
-  updateEvents: PropTypes.func,
-  dateFrom: PropTypes.object,
+  height: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  marginTop: PropTypes.number.isRequired,
+  time: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  updateEvents: PropTypes.func.isRequired,
+};
+
+Event.defaultProps = {
+  description: '',
 };
 
 export default Event;

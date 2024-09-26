@@ -35,7 +35,7 @@ const Navigation = ({ weekDates }) => {
 };
 
 Navigation.propTypes = {
-  weekDates: PropTypes.array,
+  weekDates: PropTypes.array.isRequired,
 };
 
 export default Navigation;

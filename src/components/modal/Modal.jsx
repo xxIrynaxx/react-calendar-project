@@ -125,9 +125,9 @@ const Modal = ({ toggleModal, updateEvents, events }) => {
 };
 
 Modal.propTypes = {
-  toggleModal: PropTypes.func,
-  updateEvents: PropTypes.func,
-  events: PropTypes.array,
+  toggleModal: PropTypes.func.isRequired,
+  updateEvents: PropTypes.func.isRequired,
+  events: PropTypes.array.isRequired,
 };
 
 export default Modal;

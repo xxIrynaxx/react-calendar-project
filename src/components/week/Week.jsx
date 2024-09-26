@@ -37,9 +37,9 @@ const Week = ({ events, weekDates, updateEvents }) => {
 };
 
 Week.propTypes = {
-  events: PropTypes.array,
-  weekDates: PropTypes.array,
-  updateEvents: PropTypes.func,
+  events: PropTypes.array.isRequired,
+  weekDates: PropTypes.array.isRequired,
+  updateEvents: PropTypes.func.isRequired,
 };
 
 export default Week;

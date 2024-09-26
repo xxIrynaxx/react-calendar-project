@@ -22,8 +22,12 @@ const Calendar = ({ events, weekDates, updateEvents }) => {
 
 Calendar.propTypes = {
   events: PropTypes.array,
-  weekDates: PropTypes.array,
-  updateEvents: PropTypes.func,
+  weekDates: PropTypes.array.isRequired,
+  updateEvents: PropTypes.func.isRequired,
+};
+
+Calendar.defaultProps = {
+  events: [],
 };
 
 export default Calendar;
