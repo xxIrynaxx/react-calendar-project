@@ -1,4 +1,4 @@
-@use '../../variables.scss';
+@import '../../variables.scss';
 
 .modal {
   position: fixed;
@@ -7,9 +7,9 @@
   align-items: center;
 
   &__content {
-    background: variables.$popup-content-background;
+    background: $popup-content-background;
     padding: 16px;
-    border: variables.$button-content-popup-border;
+    border: $button-content-popup-border;
     border-radius: 8px;
   }
 }
@@ -20,7 +20,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: variables.$overlay-background-color;
+  background-color: $overlay-background-color;
   z-index: 10;
 }
 
@@ -54,7 +54,7 @@
     margin: 8px;
     margin-left: auto;
     border: none;
-    color: variables.$text-color;
+    color: $text-color;
     background-color: cornflowerblue;
     border: none;
     padding: 8px 16px;

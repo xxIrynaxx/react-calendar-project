@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { fetchCreateEvent } from '../../gateway/eventsGateway';
+import { createEvent } from '../../gateway/eventsGateway';
 import {
   checkEventDuration,
   checkEventStart,
@@ -11,67 +11,60 @@ import {
 import './modal.scss';
 
 const Modal = ({ toggleModal, updateEvents, events }) => {
-  const [titleValue, setTitleValue] = useState('');
-  const [descriptionValue, setDescriptionValue] = useState('');
-  const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
-  const [startTime, setStartTime] = useState(moment(new Date()).format('HH:00'));
-  const [endTime, setEndTime] = useState(
-    moment(new Date().setHours(new Date().getHours() + 1)).format('HH:00'),
-  );
+  const [formValues, setFormValues] = useState({
+    title: '',
+    description: '',
+    date: moment(new Date()).format('YYYY-MM-DD'),
+    startTime: moment(new Date()).format('HH:00'),
+    endTime: moment(new Date().setHours(new Date().getHours() + 1)).format('HH:00'),
+  });
 
-  const changeValueHandler = e =>
-    e.target.name === 'title' ? setTitleValue(e.target.value) : setDescriptionValue(e.target.value);
+  const validateEvent = (event, events) => {
+    const { dateFrom, dateTo } = event;
+    const diffTime = dateTo - dateFrom;
 
-  const handlerDate = e => {
-    setDate(e.target.value);
+    return checkEventTiming(formValues.startTime.split(':')[1], formValues.endTime.split(':')[1])
+      ? false
+      : checkEventStart(dateFrom, dateTo)
+      ? false
+      : checkEventDuration(diffTime)
+      ? false
+      : checkEventTimeCrossing(events, event)
+      ? false
+      : true;
   };
 
-  const handlerStartTime = e => {
-    setStartTime(e.target.value);
-  };
-
-  const handlerEndTime = e => {
-    setEndTime(e.target.value);
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setFormValues(prevFormValues => ({
+      ...prevFormValues,
+      [name]: value,
+    }));
   };
 
   const createEventHandler = async e => {
     e.preventDefault();
-    const [year, month, day] = date.split('-');
-    const [startHour, startMinute] = startTime.split(':');
-    const [endHour, endMinute] = endTime.split(':');
 
-    if (checkEventTiming(startMinute, endMinute)) {
-      return false;
-    }
+    const [year, month, day] = formValues.date.split('-');
+    const [startHour, startMinute] = formValues.startTime.split(':');
+    const [endHour, endMinute] = formValues.endTime.split(':');
 
     const event = {
-      title: titleValue,
-      description: descriptionValue,
+      title: formValues.title,
+      description: formValues.description,
       dateFrom: new Date(year, month - 1, day, startHour, startMinute),
       dateTo: new Date(year, month - 1, day, endHour, endMinute),
     };
 
-    const { dateFrom, dateTo } = event;
-    console.log(dateFrom);
-    console.log(dateTo);
-    if (checkEventStart(dateFrom, dateTo)) {
+    const validation = validateEvent(event, events);
+
+    if (!validation) {
       return false;
     }
 
-    const diffTime = dateTo - dateFrom;
-
-    if (checkEventDuration(diffTime)) {
-      return false;
-    }
-
-    if (checkEventTimeCrossing(events, event)) {
-      return false;
-    }
-
-    toggleModal();
-    await fetchCreateEvent(event);
+    await createEvent(event);
     await updateEvents();
-    return true;
+    toggleModal();
   };
 
   return (
@@ -87,39 +80,39 @@ const Modal = ({ toggleModal, updateEvents, events }) => {
               name="title"
               placeholder="Title"
               className="event-form__field"
-              value={titleValue}
-              onChange={changeValueHandler}
+              value={formValues.title}
+              onChange={handleChange}
             />
             <div className="event-form__time">
               <input
                 type="date"
                 name="date"
                 className="event-form__field"
-                value={date}
-                onChange={handlerDate}
+                value={formValues.date}
+                onChange={handleChange}
               />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
-                value={startTime}
-                onChange={handlerStartTime}
+                value={formValues.startTime}
+                onChange={handleChange}
               />
               <span>-</span>
               <input
                 type="time"
                 name="endTime"
                 className="event-form__field"
-                value={endTime}
-                onChange={handlerEndTime}
+                value={formValues.endTime}
+                onChange={handleChange}
               />
             </div>
             <textarea
               name="description"
               placeholder="Description"
               className="event-form__field"
-              value={descriptionValue}
-              onChange={changeValueHandler}
+              value={formValues.description}
+              onChange={handleChange}
             />
             <button type="submit" className="event-form__submit-btn" onClick={createEventHandler}>
               Create
@@ -134,12 +127,6 @@ const Modal = ({ toggleModal, updateEvents, events }) => {
 Modal.propTypes = {
   toggleModal: PropTypes.func,
   updateEvents: PropTypes.func,
-  date: PropTypes.string,
-  startTime: PropTypes.string,
-  endTime: PropTypes.string,
-  handlerDate: PropTypes.func,
-  handlerStartTime: PropTypes.func,
-  handlerEndTime: PropTypes.func,
   events: PropTypes.array,
 };
 

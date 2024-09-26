@@ -1,13 +1,9 @@
-@use '../../variables.scss';
+@import '../../variables.scss';
 
 .calendar {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 60px);
-
   &__time-slot {
     height: 59px;
     position: relative;
-    border-bottom: variables.$day-time_slot-border;
+    border-bottom: $day-time_slot-border;
   }
 }

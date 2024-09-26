@@ -1,22 +1,18 @@
-@use '../../variables.scss';
+@import '../../variables.scss';
 
 .calendar {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 60px);
-
   &__header {
-    color: variables.$text-color;
+    color: $text-color;
     display: flex;
     height: 100px;
     padding-left: 48px;
-    background: variables.$header-gradient;
+    background: $header-gradient;
   }
 
   &__day {
     position: relative;
     flex: 1;
-    border-left: variables.$day-time_slot-border;
+    border-left: $day-time_slot-border;
   }
 }
 
@@ -24,13 +20,13 @@
   font-size: 22px;
   width: 35px;
   text-align: center;
-  color: variables.$day_number-today-color;
+  color: $day_number-today-color;
   border-radius: 100%;
-  background-color: variables.$day_number-today-background-color;
+  background-color: $day_number-today-background-color;
 }
 
 .day-label__day-name_today {
-  color: variables.$day_name-today-color;
+  color: $day_name-today-color;
   font-size: 14px;
   text-transform: uppercase;
 }

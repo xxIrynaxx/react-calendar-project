@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { fetchDeleteEvent } from '../../gateway/eventsGateway';
+import { deleteEvent } from '../../gateway/eventsGateway';
 import './event.scss';
 
 const Event = ({ height, marginTop, title, description, time, id, updateEvents }) => {
@@ -23,7 +23,7 @@ const Event = ({ height, marginTop, title, description, time, id, updateEvents }
       showEvent: true,
     });
 
-    await fetchDeleteEvent(id);
+    await deleteEvent(id);
     updateEvents();
 
     setEvent({

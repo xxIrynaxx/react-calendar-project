@@ -9,6 +9,7 @@ import './hour.scss';
 
 const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
   const isToday = format(dayStart, 'MM dd yyyy') === format(new Date(), 'MM dd yyyy');
+
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {isToday && dataHour === getHours(new Date()) ? <Line /> : null}

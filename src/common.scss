@@ -1,9 +1,9 @@
-@use './variables.scss';
+@import './variables.scss';
 
 .button {
   height: 40px;
   border-radius: 8px;
-  border: variables.$button-content-popup-border;
+  border: $button-content-popup-border;
   outline: none;
   cursor: pointer;
   font-size: 16px;
@@ -24,9 +24,9 @@
   align-items: center;
 
   &__content {
-    background: variables.$popup-content-background;
+    background: $popup-content-background;
     padding: 16px;
-    border: variables.$button-content-popup-border;
+    border: $button-content-popup-border;
     border-radius: 8px;
   }
 }
@@ -37,16 +37,16 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: variables.$overlay-background-color;
+  background-color: $overlay-background-color;
   z-index: 10;
 }
 
 .popup {
   &__content {
     position: absolute;
-    background: variables.$popup-content-background;
+    background: $popup-content-background;
     padding: 16px;
-    border: variables.$button-content-popup-border;
+    border: $button-content-popup-border;
     border-radius: 8px;
   }
 }
