@@ -4,32 +4,17 @@ import { deleteEvent } from '../../gateway/eventsGateway';
 import './event.scss';
 
 const Event = ({ height, marginTop, title, description, time, id, updateEvents }) => {
-  const [event, setEvent] = useState({
-    showBtn: false,
-    showEvent: true,
-  });
+  const [showBtn, setShowBtn] = useState(false);
+
   const changeHandler = () => {
-    setEvent({
-      showBtn: !event.showBtn,
-      showEvent: true,
-    });
+    setShowBtn(prevState => !prevState);
   };
 
   const deleteEventHandler = async e => {
     e.stopPropagation();
 
-    setEvent({
-      showBtn: !event.showBtn,
-      showEvent: true,
-    });
-
     await deleteEvent(id);
     updateEvents();
-
-    setEvent({
-      showBtn: false,
-      showEvent: false,
-    });
   };
 
   const eventStyle = {
@@ -37,27 +22,20 @@ const Event = ({ height, marginTop, title, description, time, id, updateEvents }
     marginTop,
   };
 
-  const { showEvent, showBtn } = event;
   return (
-    <>
-      {showEvent && (
-        <>
-          <div style={eventStyle} className="event" onClick={changeHandler}>
-            <div className="event__title">{title}</div>
-            <div className="event__time">{time}</div>
-            <div className="event__description-scroll">
-              <span className="event__description">{description}</span>
-            </div>
+    <div style={eventStyle} className="event" onClick={changeHandler}>
+      <div className="event__title">{title}</div>
+      <div className="event__time">{time}</div>
+      <div className="event__description-scroll">
+        <span className="event__description">{description}</span>
+      </div>
 
-            {showBtn && (
-              <button className="delete-event-btn" onClick={deleteEventHandler}>
-                <i className="fas fa-trash-alt">Delete</i>
-              </button>
-            )}
-          </div>
-        </>
+      {showBtn && (
+        <button className="delete-event-btn" onClick={deleteEventHandler}>
+          <i className="fas fa-trash-alt">Delete</i>
+        </button>
       )}
-    </>
+    </div>
   );
 };
 

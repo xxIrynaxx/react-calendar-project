@@ -14,9 +14,9 @@ const Modal = ({ toggleModal, updateEvents, events }) => {
   const [formValues, setFormValues] = useState({
     title: '',
     description: '',
-    date: moment(new Date()).format('YYYY-MM-DD'),
-    startTime: moment(new Date()).format('HH:00'),
-    endTime: moment(new Date().setHours(new Date().getHours() + 1)).format('HH:00'),
+    date: moment().format('YYYY-MM-DD'),
+    startTime: moment().format('HH:00'),
+    endTime: moment().add(1, 'hour').format('HH:00'),
   });
 
   const validateEvent = (event, events) => {

@@ -4,14 +4,14 @@ import moment from 'moment';
 import Line from '../line/Line';
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
-import { format, getHours } from 'date-fns';
+import { getHours } from 'date-fns';
 
 const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
-  const isToday = format(dayStart, 'MM dd yyyy') === format(new Date(), 'MM dd yyyy');
+  const isToday = moment(dayStart).format('MM dd yyyy') === moment().format('MM dd yyyy');
 
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
-      {isToday && dataHour === getHours(new Date()) ? <Line /> : null}
+      {isToday && dataHour === getHours(new Date()) && <Line />}
       {hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
         const eventStart = `${moment(dateFrom).hour()}:${formatMins(moment(dateFrom).minute())}`;
         const eventEnd = `${moment(dateTo).hour()}:${formatMins(moment(dateTo).minute())}`;
