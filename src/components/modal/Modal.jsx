@@ -7,7 +7,7 @@ import {
   checkEventStart,
   checkEventTimeCrossing,
   checkEventTiming,
-} from '../../validityCheck/validation.js';
+} from '../../utils/validation';
 import './modal.scss';
 
 const Modal = ({ toggleModal, updateEvents, events }) => {
@@ -23,15 +23,12 @@ const Modal = ({ toggleModal, updateEvents, events }) => {
     const { dateFrom, dateTo } = event;
     const diffTime = dateTo - dateFrom;
 
-    return checkEventTiming(formValues.startTime.split(':')[1], formValues.endTime.split(':')[1])
-      ? false
-      : checkEventStart(dateFrom, dateTo)
-      ? false
-      : checkEventDuration(diffTime)
-      ? false
-      : checkEventTimeCrossing(events, event)
-      ? false
-      : true;
+    return !(
+      checkEventTiming(formValues.startTime.split(':')[1], formValues.endTime.split(':')[1]) ||
+      checkEventStart(dateFrom, dateTo) ||
+      checkEventDuration(diffTime) ||
+      checkEventTimeCrossing(events, event)
+    );
   };
 
   const handleChange = event => {
