@@ -7,7 +7,7 @@ import { formatMins } from '../../utils/dateUtils.js';
 import { getHours } from 'date-fns';
 
 const Hour = ({ events, updateEvents, dayStart, dataHour, hourEvents }) => {
-  const isToday = moment(dayStart).format('MM dd yyyy') === moment().format('MM dd yyyy');
+  const isToday = moment(dayStart).isSame(moment(), 'day');
 
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
